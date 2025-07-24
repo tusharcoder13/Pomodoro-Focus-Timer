@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Focus Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔶 Focus Timer</h1>
+
+    <div class="timer-display" id="timer">25:00</div>
+
+    <div class="controls">
+      <button id="startBtn" class="start">Start</button>
+      <button id="pauseBtn" class="pause">Pause</button>
+      <button id="resetBtn" class="reset">Reset</button>
+    </div>
+
+    <div class="settings">
+      <label>
+        Work (min):
+        <input type="number" id="workDuration" value="25" min="1" />
+      </label>
+      <label>
+        Break (min):
+        <input type="number" id="breakDuration" value="5" min="1" />
+      </label>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
