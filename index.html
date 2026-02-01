@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Focus Timer Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="dashboard">
+
+    <!-- TOP ROW -->
+    <div class="top-row">
+
+      <!-- TIMER PANEL -->
+      <div class="app">
+        <h1>⏳ Focus Timer</h1>
+
+        <div class="progress-container">
+          <svg width="220" height="220">
+            <circle class="bg" cx="110" cy="110" r="100"></circle>
+            <circle class="progress" cx="110" cy="110" r="100"></circle>
+          </svg>
+          <div id="timer">25:00</div>
+        </div>
+
+        <div class="controls">
+          <button id="start">Start</button>
+          <button id="pause">Pause</button>
+          <button id="reset">Reset</button>
+        </div>
+
+        <div class="presets">
+          <button data-work="25" data-break="5">25 / 5</button>
+          <button data-work="50" data-break="10">50 / 10</button>
+        </div>
+
+        <div class="settings">
+          <label>
+            Work
+            <input id="work" type="number" min="1" />
+          </label>
+          <label>
+            Break
+            <input id="break" type="number" min="1" />
+          </label>
+        </div>
+      </div>
+
+      <!-- INFO PANEL -->
+      <div class="info-panel">
+        <h3>Info</h3>
+
+        <div class="info-card">
+          <p>📝 Current Focus</p>
+          <input id="taskInput" placeholder="What are you focusing on?" />
+          <small>Last completed: <span id="lastTask">None</span></small>
+        </div>
+
+        <div class="info-card">
+          <p>✅ Total Sessions</p>
+          <h2 id="sessions">0</h2>
+        </div>
+
+        <button id="themeToggle">🌗 Toggle Theme</button>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ROW : STATS PANEL -->
+    <div class="stats-panel">
+      <h3>Stats</h3>
+
+      <div class="stats-grid">
+        <div class="stats-card">
+          <p>🔥 Current Streak</p>
+          <h2><span id="streak">0</span> days</h2>
+        </div>
+
+        <div class="stats-card">
+          <p>📊 Last 7 Days</p>
+          <div class="chart" id="chart"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

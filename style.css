@@ -1,64 +1,268 @@
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --panel: #020617;
+  --text: #e5e7eb;
+  --accent: #22c55e;
+  --muted: #94a3b8;
+}
+
+.light {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --panel: #e2e8f0;
+  --text: #0f172a;
+  --accent: #16a34a;
+  --muted: #475569;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #667eea, #764ba2);
-  color: white;
-  text-align: center;
   margin: 0;
-  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-.container {
-  max-width: 400px;
-  margin: 100px auto;
-  background: rgba(0, 0, 0, 0.3);
+/* ================= Dashboard ================= */
+
+.dashboard {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 10px;
+}
+
+/* ================= Top Row ================= */
+
+.top-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .top-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= Panels ================= */
+
+.app,
+.info-panel,
+.stats-panel {
+  background: var(--card);
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-h1 {
-  margin-bottom: 20px;
+.info-panel {
+  background: var(--panel);
 }
 
-.timer-display {
-  font-size: 4em;
-  margin: 20px 0;
-  font-weight: bold;
+/* ================= Timer ================= */
+
+.app {
+  text-align: center;
+}
+
+.progress-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 20px auto;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+circle {
+  fill: none;
+  stroke-width: 12;
+}
+
+.bg {
+  stroke: #334155;
+}
+
+.progress {
+  stroke: var(--accent);
+  stroke-dasharray: 628;
+  stroke-dashoffset: 628;
+  transition: stroke-dashoffset 0.25s linear;
+}
+
+#timer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+/* ================= Controls ================= */
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .controls button {
-  padding: 10px 25px;
-  margin: 10px;
-  font-size: 1.1em;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: 600;
+  background: var(--accent);
+  color: #022c22;
 }
 
-.start { background-color: #4CAF50; }
-.pause { background-color: #f39c12; }
-.reset { background-color: #e74c3c; }
+/* ================= Presets & Settings ================= */
 
-.controls button:hover {
-  transform: scale(1.05);
-}
-
+.presets,
 .settings {
-  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
 }
 
 .settings label {
-  display: block;
-  margin: 10px 0;
-  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 .settings input {
-  width: 60px;
-  padding: 5px;
-  font-size: 1em;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 8px;
   border: none;
   text-align: center;
+}
+
+/* ================= Info Panel ================= */
+
+.info-panel h3,
+.stats-panel h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.info-card input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+.info-card h2 {
+  color: var(--accent);
+  font-size: 2.2rem;
+}
+
+#themeToggle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+/* ================= Stats Panel ================= */
+
+.stats-panel {
+  margin-top: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.stats-card h2 {
+  color: var(--accent);
+  font-size: 2.2rem;
+}
+
+/* ================= Chart ================= */
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 120px;
+  margin-top: 10px;
+}
+
+.chart-bar {
+  flex: 1;
+  background: var(--accent);
+  border-radius: 6px 6px 0 0;
+  opacity: 0.85;
+  transition: height 0.3s ease;
+}
+
+/* ================= Toast ================= */
+
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.progress.complete {
+  animation: pulse 0.6s ease;
 }
